@@ -26,19 +26,27 @@ def index():
     
     return render_template('index.html')
 
-@app.route('/otp', methods=["POST", "GET"])
+@app.route('/otp_ui', methods=["POST", "GET"])
 
 def otp():
     global otObtained
     name = request.form['name']
     email = request.form['email']
     otObtained = generate(email)
-    return render_template('otp.html')
+    return render_template('otp_ui.html')
 
 @app.route('/nextPage', methods=["POST", "GET"])
 def nextPage():
     msg = ""
-    ot = request.form["otp"]
+    ot0 = request.form["otp0"] * 100000
+    ot1 = request.form["otp1"] * 10000
+    ot2 = request.form["otp2"] * 1000
+    ot3 = request.form["otp3"] * 100
+    ot4 = request.form["otp4"] * 10
+    ot5 = request.form["otp5"] * 1
+    
+    ot = ot0 + ot1 + ot2 + ot3 + ot4 + ot5
+
     if(ot==otObtained):
         msg = "Verification Successful!"
     else:
