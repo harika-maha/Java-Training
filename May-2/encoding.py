@@ -12,9 +12,9 @@ encoded_email = base64.b64encode(email.encode('utf-8')).decode('utf-8')
 # Connect to the database
 connection = mysql.connector.connect(
     host="localhost",
-    user="myusername",
-    password="mypassword",
-    database="mydatabase"
+    user="root",
+    password="password",
+    database="encodingDB"
 )
 
 # Insert the encoded name and email into the database
