@@ -1,4 +1,3 @@
-package May3;
 public class sieve{
     public static void main(String[] args) {
         int a = 10; 
