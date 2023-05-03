@@ -5,7 +5,7 @@ import smtplib
 
 def generate(email):
     otp = ''.join([str(random.randint(0,9)) for i in range(6)])
-    password = 'hfqkzjryvrxigwzt'
+    password = 'nqbjxzzoyowkladk'
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server.login('hari02maha@gmail.com', password)
@@ -37,23 +37,24 @@ def otp():
 
 @app.route('/nextPage', methods=["POST", "GET"])
 def nextPage():
-    msg = ""
-    ot0 = request.form["otp0"] * 100000
-    ot1 = request.form["otp1"] * 10000
-    ot2 = request.form["otp2"] * 1000
-    ot3 = request.form["otp3"] * 100
-    ot4 = request.form["otp4"] * 10
-    ot5 = request.form["otp5"] * 1
+    # msg = ""
+    ot0 = int(request.form["otp0"]) * 100000
+    ot1 = int(request.form["otp1"]) * 10000
+    ot2 = int(request.form["otp2"]) * 1000
+    ot3 = int(request.form["otp3"]) * 100
+    ot4 = int(request.form["otp4"]) * 10
+    ot5 = int(request.form["otp5"]) * 1
     
     ot = ot0 + ot1 + ot2 + ot3 + ot4 + ot5
+    print(ot)
 
-    if(ot==otObtained):
-        msg = "Verification Successful!"
+    if(ot==int(otObtained)):
+        return render_template('nextPage_Verified.html')
+
     else:
-        msg = "Not the right OTP!"
+        return render_template('nextPage_Failed.html')
     
-    return render_template('nextPage.html', msg = msg)
-
+    # return render_template('nextPage.html', msg = msg)
 
 if __name__ == "__main__":
     app.run(debug=True)
