@@ -17,8 +17,10 @@ public class climbingStaircase{
     return steps[n];
     }
 }
+
     public static void main(String[] args) {
      int n=3;
      System.out.println(climbStairs(n));
     }
    }
+
