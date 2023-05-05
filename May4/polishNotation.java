@@ -36,7 +36,7 @@ public class polishNotation {
         return stack.pop();
     }
     
-    private boolean isOperator(String str) {
+    private static boolean isOperator(String str) {
         return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/");
     }
     public static void main(String[] args) {
